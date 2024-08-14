@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+//Comando para iniciar o Prisma: npx prisma init --datasource-provider SQLite
+//Comando pra rodar a migration: npx prisma migrate dev
+//Comando pra rodar o Prisma Studio: npx prisma studio
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(uuid())
+  username String @unique
+  name     String
+
+  created_at DateTime @default(now())
+
+  @@map("users")
+}
