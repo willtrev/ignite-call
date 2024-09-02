@@ -30,12 +30,10 @@ interface BlockedDates {
 type CalendarWeeks = CalendarWeek[]
 
 interface CalendarProps {
-  selectedDate: Date | null
   onDateSelected: (date: Date) => void
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function Calendar({ selectedDate, onDateSelected }: CalendarProps) {
+export function Calendar({ onDateSelected }: CalendarProps) {
   const [currentDate, setCurrentDate] = useState(() => {
     return dayjs().set('date', 1)
   })
